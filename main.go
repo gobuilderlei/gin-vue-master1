@@ -4,6 +4,7 @@ import (
 	"go.uber.org/zap"
 	"server/core"
 	"server/global"
+	"server/initialize"
 )
 
 //go:generate go env -w GO111MODULE=on
@@ -22,4 +23,5 @@ func main() {
 	global.GVA_VP = core.Viper() // 初始化Viper
 	global.GVA_LOG = core.Zap()  //初始化zap日志库
 	zap.ReplaceGlobals(global.GVA_LOG)
+	global.GVA_DB = initialize.Gorm() // gorm链接数据库
 }
