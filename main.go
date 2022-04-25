@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go.uber.org/zap"
 	"server/core"
 	"server/global"
 )
@@ -19,4 +20,6 @@ import (
 // @BasePath /
 func main() {
 	global.GVA_VP = core.Viper() // 初始化Viper
+	global.GVA_LOG = core.Zap()  //初始化zap日志库
+	zap.ReplaceGlobals(global.GVA_LOG)
 }
